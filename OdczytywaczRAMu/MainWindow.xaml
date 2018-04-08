@@ -1,0 +1,28 @@
+﻿<Window x:Class="OdczytywaczRAMu.Okienko"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OdczytywaczRAMu"
+        mc:Ignorable="d"
+        Title="Odczytywanie RAMu" Height="89.916" Width="500">
+    <Grid Margin="0,0,0,11">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" x:Name="EtykietaRAMZajety">
+            Ilość zajętej pamięci RAM:
+        </Label>
+        <Label Grid.Row="0" Grid.Column="1" x:Name="EtykieraRAMWolny">
+            Ilość wolnej pamięci RAM:
+        </Label>
+        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            Program do monitorowania zajętości pamięci RAM będzie aktualizował odczyty co minutę
+        </Label>
+    </Grid>
+</Window>

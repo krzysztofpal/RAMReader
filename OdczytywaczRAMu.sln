@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdczytywaczRAMu", "OdczytywaczRAMu\OdczytywaczRAMu.csproj", "{6512C786-375B-46DC-8FDB-108D3D6DFAA5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6512C786-375B-46DC-8FDB-108D3D6DFAA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6512C786-375B-46DC-8FDB-108D3D6DFAA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6512C786-375B-46DC-8FDB-108D3D6DFAA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6512C786-375B-46DC-8FDB-108D3D6DFAA5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F418C7A3-E182-4F6A-A323-7DFC5B1359E0}
+	EndGlobalSection
+EndGlobal

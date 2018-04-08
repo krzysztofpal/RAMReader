@@ -1,0 +1,1 @@
+systeminfo |find "Physical Memory"
