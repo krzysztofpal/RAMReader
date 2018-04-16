@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OdczytywaczRAMu"
         mc:Ignorable="d"
-        Title="Odczytywanie RAMu" Height="89.916" Width="500">
+        Title="Odczytywanie RAMu" Height="140" Width="500">
     <Grid Margin="0,0,0,11">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -21,7 +22,21 @@
         <Label Grid.Row="0" Grid.Column="1" x:Name="EtykieraRAMWolny">
             Ilość wolnej pamięci RAM:
         </Label>
-        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+        <Label Grid.Row="1" Grid.Column="0">
+            Jednostki:
+        </Label>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <RadioButton GroupName="Units" IsChecked="True" Padding="0,0,10,0" x:Name="bCheckbox" Checked="bCheckbox_Checked">
+                <TextBlock Text="B" />
+            </RadioButton>
+            <RadioButton GroupName="Units" Padding="0,0,10,0" x:Name="kbCheckbox" Checked="kbCheckbox_Checked">
+                <TextBlock Text="KB" />
+            </RadioButton>
+            <RadioButton GroupName="Units" x:Name="mbCheckbox" Checked="mbCheckbox_Checked">
+                <TextBlock Text="MB" />
+            </RadioButton>
+        </StackPanel>
+        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             Program do monitorowania zajętości pamięci RAM będzie aktualizował odczyty co minutę
         </Label>
     </Grid>

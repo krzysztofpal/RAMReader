@@ -22,6 +22,9 @@ namespace OdczytywaczRAMu
     {
         RAMReader OdczytywaczRAM { get; set; }
         System.Timers.Timer Licznik { get; set; }
+        private bool bytesUnit = true;
+        private bool kilobytesUnit = false;
+        private bool megabytesUnit = false;
 
         public Okienko()
         {
@@ -50,11 +53,40 @@ namespace OdczytywaczRAMu
         public void SprawdzRAM()
         {
             
-            var a = Task<Tuple<int,int>>.Run(() => { return OdczytywaczRAM.SprawdzRAM(); }).Result;
-            this.EtykietaRAMZajety.Content = "Ilość zajętej pamięci RAM: " + (a.Item1 - a.Item2).ToString() + "MB";
-            this.EtykieraRAMWolny.Content = "Ilość wolnej pamięci RAM: " + a.Item2.ToString() + "MB";
+            var a = Task<Tuple<ulong,ulong>>.Run(() => { return OdczytywaczRAM.SprawdzRAM(); }).Result;
+
+            ulong unit = bytesUnit ? 1 : (kilobytesUnit ? (ulong)1000 : (megabytesUnit ? (ulong)1000000 : 1));
+            string unitName = bytesUnit ? "B" : (kilobytesUnit ? "KB" : (megabytesUnit ? "MB" : ""));
+
+            this.EtykietaRAMZajety.Content = string.Format("Ilość zajętej pamięci RAM: {0}{1}", ((a.Item1 - a.Item2) / unit).ToString(), unitName);
+            this.EtykieraRAMWolny.Content = string.Format("Ilość wolnej pamięci RAM: {0}{1}", (a.Item2 / unit).ToString(), unitName);
         }
 
+        private void checkUnitStates()
+        {
+            if (this.bCheckbox == null || this.kbCheckbox == null || this.mbCheckbox == null)
+                return;
+            this.bytesUnit = this.bCheckbox.IsChecked.HasValue ? this.bCheckbox.IsChecked.Value : false;
+            this.kilobytesUnit = this.kbCheckbox.IsChecked.HasValue ? this.kbCheckbox.IsChecked.Value : false;
+            this.megabytesUnit = this.mbCheckbox.IsChecked.HasValue ? this.mbCheckbox.IsChecked.Value : false;
+        }
 
+        private void bCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            this.checkUnitStates();
+            this.SprawdzRAM();
+        }
+
+        private void kbCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            this.checkUnitStates();
+            this.SprawdzRAM();
+        }
+
+        private void mbCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            this.checkUnitStates();
+            this.SprawdzRAM();
+        }
     }
 }
