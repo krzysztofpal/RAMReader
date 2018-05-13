@@ -9,8 +9,10 @@ using Microsoft.VisualBasic.Devices;
 
 namespace OdczytywaczRAMu.Services
 {
-    public class RAMReader
+    public class RAMReader : IRAMReader
     {
+        public RAMReader() { }
+
         public Tuple<ulong, ulong> SprawdzRAM()
         {
             System.Diagnostics.Process p = new System.Diagnostics.Process();

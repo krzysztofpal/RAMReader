@@ -24,6 +24,7 @@ namespace OdczytywaczRAMu.ViewModels
                 OnPropertyChanged(nameof(UnitType));
                 OnPropertyChanged(nameof(AvaliableRamText));
                 OnPropertyChanged(nameof(OccupiedRamText));
+                OnPropertyChanged(nameof(WholeRAM));
             }
         }
 
@@ -36,6 +37,7 @@ namespace OdczytywaczRAMu.ViewModels
                 _avaliableRam = value;
                 OnPropertyChanged(nameof(AvaliableRam));
                 OnPropertyChanged(nameof(AvaliableRamText));
+                OnPropertyChanged(nameof(WholeRAM));
             }
         }
 
@@ -48,6 +50,7 @@ namespace OdczytywaczRAMu.ViewModels
                 _occupiedRam = value;
                 OnPropertyChanged(nameof(OccupiedRam));
                 OnPropertyChanged(nameof(OccupiedRamText));
+                OnPropertyChanged(nameof(WholeRAM));
             }
         }
 
@@ -64,6 +67,14 @@ namespace OdczytywaczRAMu.ViewModels
             get
             {
                 return getUnitsText(this.OccupiedRam);
+            }
+        }
+
+        public string WholeRAM
+        {
+            get
+            {
+                return getUnitsText(this.OccupiedRam + this.AvaliableRam);
             }
         }
 

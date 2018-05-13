@@ -6,11 +6,11 @@
         xmlns:viewmodel="clr-namespace:OdczytywaczRAMu.ViewModels"
         xmlns:local="clr-namespace:OdczytywaczRAMu"
         mc:Ignorable="d"
-        Title="Odczytywanie RAMu" Height="186.087" Width="500">
-    <Window.Resources>
+        Title="Odczytywanie RAMu" Height="140" Width="500">
+    <!--<Window.Resources>
         <viewmodel:RamReaderViewModel x:Key="vm"></viewmodel:RamReaderViewModel>
-    </Window.Resources>
-    <Grid Margin="0,0,0,11" DataContext="{Binding Source={StaticResource vm}}">
+    </Window.Resources>-->
+    <Grid Margin="0,0,0,11" DataContext="{Binding Source=ViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -21,7 +21,7 @@
             <ColumnDefinition Width="250"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-            <Label  x:Name="EtykietaRAMZajety">
+            <Label>
                 Ilość zajętej pamięci RAM:
             </Label>
             <Label Content="{Binding Path=OccupiedRamText}">
@@ -29,23 +29,31 @@
             </Label>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-            <Label  x:Name="EtykieraRAMWolny">
+            <Label>
                 Ilość wolnej pamięci RAM:
             </Label>
             <Label Content="{Binding Path=AvaliableRamText}">
                 
             </Label>
         </StackPanel>
-        
-        <Label Grid.Row="1" Grid.Column="0">
-            Jednostki:
-        </Label>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <Label>
+                Ilość całkowitej pamięci RAM:
+            </Label>
+            <Label Content="{Binding Path=WholeRAM}">
+
+            </Label>
+        </StackPanel>
+
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-            <RadioButton Command="{Binding ChangeUnitCommand}" CommandParameter="0" GroupName="Units"  Padding="0,0,10,0" x:Name="bCheckbox" Content="B" IsChecked="True">
+            <Label >
+                Jednostki:
+            </Label>
+            <RadioButton Command="{Binding ChangeUnitCommand}" CommandParameter="0" GroupName="Units"  Padding="0,0,10,0" Content="B" IsChecked="True" VerticalAlignment="Center">
             </RadioButton>
-            <RadioButton Command="{Binding ChangeUnitCommand}" CommandParameter="1" GroupName="Units" Padding="0,0,10,0" x:Name="kbCheckbox" Content="KB">
+            <RadioButton Command="{Binding ChangeUnitCommand}" CommandParameter="1" GroupName="Units" Padding="0,0,10,0"  Content="KB" VerticalAlignment="Center">
             </RadioButton>
-            <RadioButton Command="{Binding ChangeUnitCommand}" CommandParameter="2" GroupName="Units" x:Name="mbCheckbox" Content="MB">
+            <RadioButton Command="{Binding ChangeUnitCommand}" CommandParameter="2" GroupName="Units" x:Name="mbCheckbox" Content="MB" VerticalAlignment="Center">
             </RadioButton>
         </StackPanel>
         <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">

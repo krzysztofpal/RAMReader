@@ -22,19 +22,24 @@ namespace OdczytywaczRAMu
     /// </summary>
     public partial class Okienko : Window
     {
-        private TimeMeasuring Licznik { get; set; }
-        private RAMReader OdczytywaczRAM { get; set; }
-        private RamReaderViewModel ViewModel;
+        public ITimeMeasuring Licznik { get; set; }
+        public IRAMReader OdczytywaczRAM { get; set; }
+        public RamReaderViewModel ViewModel;
 
 
         public Okienko()
         {
-            this.OdczytywaczRAM = new RAMReader();
-            this.Licznik = new TimeMeasuring(60000, Uplynelo60Sekund);
             InitializeComponent();
+            this.StartWindow();
             this.ViewModel = (RamReaderViewModel)this.Resources["vm"];
             this.SprawdzRAM();
-            
+        }
+
+        public virtual void StartWindow()
+        {
+            this.OdczytywaczRAM = new RAMReader();
+            this.Licznik = new TimeMeasuring();
+            this.Licznik.Start(60000, Uplynelo60Sekund);
         }
 
 

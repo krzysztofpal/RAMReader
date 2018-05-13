@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Services\IRAMReader.cs" />
+    <Compile Include="Services\ITimeMeasuring.cs" />
     <Compile Include="Services\RAMReader.cs" />
     <Compile Include="Services\TimeMeasuring.cs" />
     <Compile Include="ViewModels\Commands\ChangeInformationWeightUnitCommand.cs" />
