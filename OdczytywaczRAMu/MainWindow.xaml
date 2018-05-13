@@ -7,10 +7,10 @@
         xmlns:local="clr-namespace:OdczytywaczRAMu"
         mc:Ignorable="d"
         Title="Odczytywanie RAMu" Height="140" Width="500">
-    <!--<Window.Resources>
+    <Window.Resources>
         <viewmodel:RamReaderViewModel x:Key="vm"></viewmodel:RamReaderViewModel>
-    </Window.Resources>-->
-    <Grid Margin="0,0,0,11" DataContext="{Binding Source=ViewModel}">
+    </Window.Resources>
+    <Grid Margin="0,0,0,11" DataContext="{Binding Source={StaticResource vm}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
