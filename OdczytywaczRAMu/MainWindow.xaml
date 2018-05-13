@@ -3,10 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:OdczytywaczRAMu.ViewModels"
         xmlns:local="clr-namespace:OdczytywaczRAMu"
         mc:Ignorable="d"
-        Title="Odczytywanie RAMu" Height="140" Width="500">
-    <Grid Margin="0,0,0,11">
+        Title="Odczytywanie RAMu" Height="186.087" Width="500">
+    <Window.Resources>
+        <viewmodel:RamReaderViewModel x:Key="vm"></viewmodel:RamReaderViewModel>
+    </Window.Resources>
+    <Grid Margin="0,0,0,11" DataContext="{Binding Source={StaticResource vm}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -16,24 +20,32 @@
             <ColumnDefinition Width="250"></ColumnDefinition>
             <ColumnDefinition Width="250"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" x:Name="EtykietaRAMZajety">
-            Ilość zajętej pamięci RAM:
-        </Label>
-        <Label Grid.Row="0" Grid.Column="1" x:Name="EtykieraRAMWolny">
-            Ilość wolnej pamięci RAM:
-        </Label>
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+            <Label  x:Name="EtykietaRAMZajety">
+                Ilość zajętej pamięci RAM:
+            </Label>
+            <Label Content="{Binding Path=OccupiedRamText}">
+               
+            </Label>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+            <Label  x:Name="EtykieraRAMWolny">
+                Ilość wolnej pamięci RAM:
+            </Label>
+            <Label Content="{Binding Path=AvaliableRamText}">
+                
+            </Label>
+        </StackPanel>
+        
         <Label Grid.Row="1" Grid.Column="0">
             Jednostki:
         </Label>
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-            <RadioButton GroupName="Units" IsChecked="True" Padding="0,0,10,0" x:Name="bCheckbox" Checked="bCheckbox_Checked">
-                <TextBlock Text="B" />
+            <RadioButton Command="{Binding ChangeUnitCommand}" CommandParameter="0" GroupName="Units"  Padding="0,0,10,0" x:Name="bCheckbox" Content="B" IsChecked="True">
             </RadioButton>
-            <RadioButton GroupName="Units" Padding="0,0,10,0" x:Name="kbCheckbox" Checked="kbCheckbox_Checked">
-                <TextBlock Text="KB" />
+            <RadioButton Command="{Binding ChangeUnitCommand}" CommandParameter="1" GroupName="Units" Padding="0,0,10,0" x:Name="kbCheckbox" Content="KB">
             </RadioButton>
-            <RadioButton GroupName="Units" x:Name="mbCheckbox" Checked="mbCheckbox_Checked">
-                <TextBlock Text="MB" />
+            <RadioButton Command="{Binding ChangeUnitCommand}" CommandParameter="2" GroupName="Units" x:Name="mbCheckbox" Content="MB">
             </RadioButton>
         </StackPanel>
         <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">

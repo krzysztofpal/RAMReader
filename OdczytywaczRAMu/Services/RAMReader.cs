@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic.Devices;
 
-namespace OdczytywaczRAMu
+namespace OdczytywaczRAMu.Services
 {
     public class RAMReader
     {
